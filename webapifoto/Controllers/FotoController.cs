@@ -17,7 +17,7 @@ namespace webapifoto.Controllers
         [HttpPost]
         public async Task<ActionResult<Foto>> PostIndex([FromForm] Foto foto)
         {
-            string rutaArchivos = "\\files";
+            string rutaArchivos = "\\files\\";
             try
             {
                 if (foto.Archivo.Length > 0)
@@ -37,7 +37,7 @@ namespace webapifoto.Controllers
             {
                 return Problem(ex.Message);
             }
-            return CreatedAtAction("PostIndex", foto);
+            return CreatedAtAction(nameof(PostIndex), foto.Nombre);
         }
     }
 }
